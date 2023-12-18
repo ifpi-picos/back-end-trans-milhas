@@ -10,13 +10,14 @@ import rotasDeCompras from './rotas/rotasDeCompras.js';
 import rotasDeConversas from './rotas/rotasDeConversas.js';
 import rotasDePagamentos from './rotas/rotasDePagamentos.js';
 import rotasDeAgendamentos from './rotas/rotasDeAgendamentos.js';
+import cadastro from './rotas/cadastro.js';
 
 const app = Express();
 app.use(cors());
 app.use(Express.json())
 app.use(logger('dev'));
 
-app.use('/passageiros', rotasDePassageiros);
+app.use('/cadastro', cadastro);
 app.use('/login', login);
 app.use(aut); // middleware de autenticacao
 //colocar abaixo todas as rotas privadas que precisam de autenticacao
@@ -26,6 +27,7 @@ app.use('/compras', rotasDeCompras);
 app.use('/conversas', rotasDeConversas);
 app.use('/pagamentos', rotasDePagamentos);
 app.use('/agendamentos', rotasDeAgendamentos);
+app.use('/passageiros', rotasDePassageiros);
 
 
 
