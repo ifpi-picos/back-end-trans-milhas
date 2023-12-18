@@ -10,26 +10,7 @@ router.get('/', async (req, res) => {
   res.send(usuarios);
 });
 
-router.post('/', async (req, res) => {
-  try {
-    const { nome } = req.body;
-    const { email } = req.body;
-    const { senha } = req.body;
-    const { sobrenome } = req.body;
-    const { telefone } = req.body;
-    const { estado } = req.body;
-    const { cidade } = req.body;
-    const usuario = { nome, sobrenome, email, senha: criptografaSenha(senha), telefone, estado, cidade};
-    console.log('usuario', usuario)
-    await prisma.usuario.create({
-      data: usuario,
-    });
-    res.status(201).send('Usuário salvo com sucesso!');
-  } catch (erro) {
-    console.error(erro)
-    res.status(400).send('erro ao salvar usuario!');
-  }
-});
+
 
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
